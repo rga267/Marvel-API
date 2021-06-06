@@ -6,6 +6,8 @@ import "./App.css";
 
 const apikey = process.env.REACT_APP_PRIVATE_KEY;
 const publickey = process.env.REACT_APP_PUBLIC_KEY;
+const timestamp = Date.now();
+const hash = md5(apikey + publickey + timestamp);
 
 const App = () => {
   const [items, setItems] = useState([]);
