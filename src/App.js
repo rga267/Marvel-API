@@ -5,13 +5,19 @@ import CharacterGrid from "./components/CharacterGrid";
 import "./App.css";
 
 const md5 = require("md5");
-
-const apikey2 = process.env.REACT_APP_PRIVATE_KEY;
-const publickey = process.env.REACT_APP_PUBLIC_KEY;
+const privatekey = "08ef212ab039a2910ea2916ea4ae51dc3b38627c";
+const publickey = "c95846b2649509acba50c2ac22dc84bb";
 const timestamp = Date.now();
-const hash2 = md5(apikey2 + publickey + timestamp);
+const hash2 = md5(timestamp + privatekey + publickey);
 
-console.log();
+/*
+<p>{result.copyright}</p>
+<p>{result.attributionText}</p>
+<p>{result.attributionHTML}</p>
+//might have to place this outside the function to access and display variables
+const metaData = result.data.results[0];
+const { thumbnail } = metaData;
+*/
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -20,32 +26,19 @@ const App = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios.get(
-        "http://gateway.marvel.com/v1/public/characters",
+        `http://gateway.marvel.com/v1/public/characters`,
         {
-          Params: {
-            apikey: apikey2,
+          params: {
+            apikey: publickey,
             ts: timestamp,
             hash: hash2,
             limit: 10,
           },
-          Headers: {
-            "Accept-Encoding": "gzip",
-            "Content-Type": "application/json",
-          },
         }
       );
 
-      //might have to place this outside the function to access and display variables
-      const metaData = result.data.results[0];
-      const { thumbnail } = metaData;
-
-      //place in render for copyright
-      //<p>{result.copyright}</p>
-      //<p>{result.attributionText}</p>
-      //<p>{result.attributionHTML}</p>
-
-      console.log(result.data);
-      setItems(result.data);
+      console.log(result.data.data.results);
+      setItems(result.data.data.results);
       setIsLoading(false);
     };
 
