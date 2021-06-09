@@ -4,10 +4,14 @@ import Header from "./components/Header";
 import CharacterGrid from "./components/CharacterGrid";
 import "./App.css";
 
-const apikey = process.env.REACT_APP_PRIVATE_KEY;
+const md5 = require("md5");
+
+const apikey2 = process.env.REACT_APP_PRIVATE_KEY;
 const publickey = process.env.REACT_APP_PUBLIC_KEY;
 const timestamp = Date.now();
-const hash = md5(apikey + publickey + timestamp);
+const hash2 = md5(apikey2 + publickey + timestamp);
+
+console.log();
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -19,10 +23,10 @@ const App = () => {
         "http://gateway.marvel.com/v1/public/characters",
         {
           Params: {
-            apikey: "your api key",
-            ts: "a timestamp",
-            hash: "your hash",
-            limit: "10",
+            apikey: apikey2,
+            ts: timestamp,
+            hash: hash2,
+            limit: 10,
           },
           Headers: {
             "Accept-Encoding": "gzip",
