@@ -6,22 +6,21 @@ const CharacterItem = ({ item }) => {
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={item.img} alt="" />
+          <img
+            src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+            alt=""
+          />
         </div>
         <div className="card-back">
           <h1>{item.name}</h1>
           <ul>
             <li>
-              <strong>Actor Name:</strong> {item.portrayed}
+              <strong>Description:</strong> {item.description}
             </li>
             <li>
-              <strong>Nickname:</strong> {item.nickname}
-            </li>
-            <li>
-              <strong>Birthday:</strong> {item.birthday}
-            </li>
-            <li>
-              <strong>Status:</strong> {item.status}
+              <a href={`${item.urls[1].url}`}>
+                <strong>Learn More</strong>
+              </a>
             </li>
           </ul>
         </div>
