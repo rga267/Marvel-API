@@ -14,7 +14,7 @@ const hash2 = md5(timestamp + privatekey + publickey);
 const App = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState(" ");
+  const [query, setQuery] = useState("h");
 
   useEffect(() => {
     const fetchItems = async () => {
