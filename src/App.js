@@ -14,11 +14,12 @@ const hash2 = md5(timestamp + privatekey + publickey);
 const App = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState(" ");
 
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios.get(
-        `http://gateway.marvel.com/v1/public/characters`,
+        `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}`,
         {
           params: {
             apikey: publickey,
@@ -35,12 +36,12 @@ const App = () => {
     };
 
     fetchItems();
-  }, []);
+  }, [query]);
 
   return (
     <div className="Container">
       <Header />
-      <Search />
+      <Search getQuery={(q) => setQuery(q)} />
       <CharacterGrid isLoading={isLoading} items={items} />
     </div>
   );
