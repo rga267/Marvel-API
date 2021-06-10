@@ -10,15 +10,6 @@ const publickey = "c95846b2649509acba50c2ac22dc84bb";
 const timestamp = Date.now();
 const hash2 = md5(timestamp + privatekey + publickey);
 
-/*
-<p>{result.copyright}</p>
-<p>{result.attributionText}</p>
-<p>{result.attributionHTML}</p>
-//might have to place this outside the function to access and display variables
-const metaData = result.data.results[0];
-const { thumbnail } = metaData;
-*/
-
 const App = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +28,7 @@ const App = () => {
         }
       );
 
-      console.log(result.data.data.results);
+      console.log(result.data);
       setItems(result.data.data.results);
       setIsLoading(false);
     };

@@ -23,6 +23,7 @@ const CharacterItem = ({ item }) => {
               </a>
             </li>
           </ul>
+          <sup>Data provided by Marvel. © 2021 MARVEL</sup>
         </div>
       </div>
     </div>
