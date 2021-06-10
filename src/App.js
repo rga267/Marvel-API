@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header";
+import Search from "./components/Search";
 import CharacterGrid from "./components/CharacterGrid";
 import "./App.css";
 
@@ -23,7 +24,7 @@ const App = () => {
             apikey: publickey,
             ts: timestamp,
             hash: hash2,
-            limit: 10,
+            limit: 20,
           },
         }
       );
@@ -39,6 +40,7 @@ const App = () => {
   return (
     <div className="Container">
       <Header />
+      <Search />
       <CharacterGrid isLoading={isLoading} items={items} />
     </div>
   );
