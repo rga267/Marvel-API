@@ -6,7 +6,7 @@ import CharacterGrid from "./components/CharacterGrid";
 import "./App.css";
 
 const md5 = require("md5");
-const privatekey = "08ef212ab039a2910ea2916ea4ae51dc3b38627c";
+const privatekey = process.env.REACT_APP_MARVEL_API_KEY;
 const publickey = "c95846b2649509acba50c2ac22dc84bb";
 const timestamp = Date.now();
 const hash2 = md5(timestamp + privatekey + publickey);
