@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios.get(
-        `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}`,
+        `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}`,
         {
           params: {
             apikey: publickey,
